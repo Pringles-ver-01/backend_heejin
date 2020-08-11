@@ -1,0 +1,57 @@
+CREATE TABLE 'news_portpolio'(
+	'news_id' int NOT NULL AUTO_INCREMENT,
+	'news_title' VARCHAR(100) NOT NULL,
+	'news_thumbnail' VARCHAR(100),
+	'news_regDate' VARCHAR(100) NOT NULL,
+	'news_content' CHARACTER NOT NULL,
+	'news_keyword' VARCHAR(100)
+	PRIMARY KEY ('news_id')
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+
+INSERT INTO news_id, news_title, news_thumbnail, news_regDate, news_content, news_keyword
+VALUES (1,
+'비비씨, 증권신고서 제출…9월 코스닥 상장',
+'미세 칫솔모 제조 기업',
+'https://imgnews.pstatic.net/image/018/2020/08/10/0004710944_001_20200810183604881.jpg?type=w540',
+'2020-08-10',
+'비비씨');
+
+INSERT INTO news_id, news_title, news_thumbnail, news_regDate, news_content, news_keyword
+VALUES (2,
+'한신평"롯데물산, 무보증사채에 AA- 부여"',
+'한국신용평가는 롯데물산이 발행한 무보증사채 신용등급에 대해 AA-를 부여한다고 8일 밝혔다.',
+'https://imgnews.pstatic.net/image/014/2020/08/08/0004473921_001_20200808184404456.jpg?type=w540',
+'2020-08-10',
+'롯데물산');
+
+INSERT INTO news_id, news_title, news_thumbnail, news_regDate, news_content, news_keyword
+VALUES (3,
+'푸드나무, 중국 공장 가동되면 실적 더 오를 것',
+'푸드나무의 이익 개선세가 내년까지 이어질 것이란 의견이 나왔다.',
+'https://imgnews.pstatic.net/image/277/2020/08/08/0004733137_001_20200808142717431.jpg?type=w540',
+'2020-08-10',
+'푸드나무');
+
+INSERT INTO news_id, news_title, news_thumbnail, news_regDate, news_content, news_keyword
+VALUES (4,
+'소니, 게임산업이 올해 이익 주도할 것',
+'소니(SONY)가 올해 1분기 시장기대치를 웃도는 실적을 거뒀다.',
+'https://imgnews.pstatic.net/image/277/2020/08/08/0004733123_001_20200808134216597.jpg?type=w540',
+'2020-08-10',
+'소니');
+
+INSERT INTO news_id, news_title, news_thumbnail, news_regDate, news_content, news_keyword
+VALUES (5,
+'한진, 유동성 위험 적은데 유증 결정은 주주가치 하락..목표가↓',
+'신영증권은 8일 한진에 대해 유상증자 결정이 긍정적으로 보이지 않는다며 투자의견을 기존 ‘매수’에서 ‘중립’으로, 목표주가를 5만5000원에서 5만원으로 낮췄다.',
+'https://imgnews.pstatic.net/image/014/2020/08/08/0004473875_001_20200808131904783.jpg?type=w540',
+'2020-08-10',
+'한진');
+
+
+SELECT * FROM news;
+SELECT news_keyword FROM news;
+SELECT news_title FROM news WHERE news_keyword = '한진';
+SELECT news_title FROM news ORDER BY news_regDate;
+
