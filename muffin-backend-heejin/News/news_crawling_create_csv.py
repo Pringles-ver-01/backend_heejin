@@ -30,40 +30,40 @@ class NewsCrawler:
         date = self.date()
         for regDate in date:
             for i in range(page_number):
-                    url = "https://finance.naver.com/news/news_list.nhn?mode=LSS3D&section_id=101&section_id2=258&section_id3=402" \
+                url = "https://finance.naver.com/news/news_list.nhn?mode=LSS3D&section_id=101&section_id2=258&section_id3=402" \
                       "&date={date}&page={page}".format(date=regDate, page=i)
-                    html = requests.get(url).text
-                    soup = BeautifulSoup(html, 'html.parser')
-                    a = soup.find_all('dd', {'class': 'articleSubject'})
-                    for item in a:
-                        title = item.find('a')['title']
-                        link = str('https://finance.naver.com{}') \
+                html = requests.get(url).text
+                soup = BeautifulSoup(html, 'html.parser')
+                a = soup.find_all('dd', {'class': 'articleSubject'})
+                for item in a:
+                    title = item.find('a')['title']
+                    link = str('https://finance.naver.com{}') \
                             .format(item.find('a')['href']
                                     .replace("§", "&sect"))
-                        wdate = self.get_wdate(link)
-                        content = self.get_text(link)
-                        thumbnail = self.get_thumbnail(link)
-                        news = {wdate : "wdate", title : "title", link: "link", thumbnail : "thumbnail", content : "content"}
-                        result.append(news)
+                    wdate = self.get_wdate(link)
+                    content = self.get_text(link)
+                    thumbnail = self.get_thumbnail(link)
+                    news = {wdate : "wdate", title : "title", link: "link", thumbnail : "thumbnail", content : "content"}
+                    result.append(news)
 
-                    b = soup.find_all('dt', {'class': 'articleSubject'})
-                    for item in b:
-                        title = item.find('a')['title']
-                        link = str('https://finance.naver.com{}') \
+                b = soup.find_all('dt', {'class': 'articleSubject'})
+                for item in b:
+                    title = item.find('a')['title']
+                    link = str('https://finance.naver.com{}') \
                             .format(item.find('a')['href']
                                     .replace("§", "&sect"))
-                        wdate = self.get_wdate(link)
-                        content = self.get_text(link)
-                        news = {wdate : "wdate", title: "title", link: "link", content: 'content'}
-                        result.append(news)
-        self.get_csv(result)
-        return result
+                    wdate = self.get_wdate(link)
+                    content = self.get_text(link)
+                    news = {wdate : "wdate", title: "title", link: "link", content: 'content'}
+                    result.append(news)
+            self.get_csv(result)
+            return result
 
     def get_csv(self,result):
         file = open('../data/news_crawling.csv','w',encoding='utf-8',newline='')
         csvfile = csv.writer(file)
         for row in result:
-            csvfile.writerow(row)
+            csvfile.writerow([row])
         file.close()
 
 
@@ -99,4 +99,4 @@ class NewsCrawler:
 
 if __name__ == '__main__':
     test = NewsCrawler()
-    crawl = test.news_crawling(page_number=100)
+    crawl = test.news_crawling(page_number=2)
