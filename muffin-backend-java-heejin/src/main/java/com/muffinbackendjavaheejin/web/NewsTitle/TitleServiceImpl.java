@@ -4,7 +4,6 @@ import com.muffinbackendjavaheejin.web.Utiles.GenericService;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -15,7 +14,8 @@ import java.util.Optional;
 
 interface TitleService extends GenericService<Title> {
     public void readCsv();
-   /* List<Title> showData();*/
+
+    List<Title> showData();
 }
 
 
@@ -44,11 +44,11 @@ public class TitleServiceImpl implements TitleService{
             e.printStackTrace();
         }
     }
-/*
+
     @Override
     public List<Title> showData() {
-        return repository.selectAllTitle();
-    }*/
+        return repository.findAll();
+    }
 
 
     @Override

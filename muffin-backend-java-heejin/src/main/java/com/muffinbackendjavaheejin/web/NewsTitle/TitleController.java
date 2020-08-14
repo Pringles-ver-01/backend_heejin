@@ -25,9 +25,9 @@ public class TitleController {
         titleService.readCsv();
     }
 
-/*    @GetMapping("/test")
+    @GetMapping("/test")
     public List<Title> getData(){
         logger.info("/title/test TitleController");
         return titleService.showData();
-    }*/
+    }
 }

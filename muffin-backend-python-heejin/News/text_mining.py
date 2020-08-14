@@ -83,7 +83,7 @@ class Controller:
         entity = Entity()
         service = Service()
         entity.context = '../data'
-        entity.fname = '/title_result.csv'
+        entity.fname = '/news_crawling.csv'
         service.extract_texts(entity)
         entity.fname = '/stopwords.txt'
         service.extract_stopword(entity)
